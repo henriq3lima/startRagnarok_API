@@ -21,7 +21,7 @@ app.listen(process.env.PORT || 8010, function () {
 });
 
 app.get("/", (_, res) => {
-  res.status(200).send(s3.config);
+  res.status(200).send(s3.config.accessKeyId);
 });
 
 
