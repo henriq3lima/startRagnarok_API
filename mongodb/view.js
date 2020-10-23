@@ -1,12 +1,21 @@
 const express = require("express"),
   router = express.Router();
 
+const aws = require('aws-sdk');
+
+
+
+
 router.get("/", (_, res) => {
+  let s3 = new aws.S3({
+    accessKeyId: process.env.S3_KEY,
+    secretAccessKey: process.env.S3_SECRET
+  });
   console.log("mongodb/send");
   const { MongoClient } = require("mongodb");
   console.log("functionSendMong");
 
-  const mongodbURL = s3;
+  const mongodbURL = s3.config.accessKeyId;
   const client = new MongoClient(mongodbURL);
   const dbName = "2020UM";
 

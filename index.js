@@ -6,14 +6,6 @@ const app = express();
 
 app.use("/view", viewRouter);
 
-const aws = require('aws-sdk');
-
-let s3 = new aws.S3({
-  accessKeyId: process.env.S3_KEY,
-  secretAccessKey: process.env.S3_SECRET
-});
-
-
 
 app.listen(process.env.PORT || 8010, function () {
   console.log("A API está funcionando!");
@@ -21,7 +13,7 @@ app.listen(process.env.PORT || 8010, function () {
 });
 
 app.get("/", (_, res) => {
-  res.status(200).send(s3.config.accessKeyId);
+  res.status(200).send("APP");
 });
 
 
